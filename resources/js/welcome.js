@@ -7,7 +7,7 @@ $(function() {
 
     $('a#filter-button').click(function(event) {
         event.preventDefault();
-        getProducts($('a.products-actual-count').text());
+        getProducts($('a.products-actual-count').first().text());
     });
 
     function getProducts(paginate) {
