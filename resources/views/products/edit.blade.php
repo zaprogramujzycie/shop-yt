@@ -9,6 +9,7 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('products.update', $product->id) }}" enctype="multipart/form-data">
+                        {{ method_field('PUT') }}
                         @csrf
 
                         <div class="form-group row">
