@@ -1,0 +1,24 @@
+shop-yt sorting by changes:
+
+1) Created class ProductsSortingParams in app/Enums using existing produtcts table fieldnames
+
+2) In WelcomeController added
+	 'sortParams' => ProductSortParams::PARAMS
+	 as additional collection passed to welcome.blade.php view
+3) In welcome.blade.php:
+	a) sorting parameters list has been changed to be created with newly passed collection, using @foreach()
+	b) parameters names in dropdown list are displayed using existing lang-file entries: 'shop.product.fields.'.{{__($sortingParam)}}
+	c) in dropdown elements added data-sorting-option={{$sortParam}}
+4) In lang-file: shop.php added field 'sort' in 'welcome' array (line 9) and additional field 'category_id' to translate field's name into "Kategoria"
+	while still keeping proper column name.
+5) In welcome.js:
+	a) added new click() function that listens to click on sorting-option class link and set text and attributes in displayed link
+	b) in getProducts() function:
+		+ added const "orderBy" that is filled with "data-sorting-option" attribute 
+		+ added "orderBy" parameter to be sent along with paginate value
+6) Back in WelcomeController added:
+	a) $orderBy variable (that comes from request) with default value ProductSortParams::NAME 
+	b) ->orderBy() method to final $query 
+	
+7) "Works on my machine" ;)
+	
