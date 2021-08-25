@@ -99,6 +99,17 @@ $(function () {
     $('a.products-actual-count').text($(this).text());
     getProducts($(this).text());
   });
+  $('a.sorting-option').click(function (event) {
+    event.preventDefault();
+    var selectedOption = $(this).data("sorting-option"); // separate values to send
+
+    var optionToDisplay = $(this).text(); // and to be displayed need to be read
+
+    $('a#sorting-option-display').attr("data-sorting-option", selectedOption) // values are injected into displayed link
+    .text(optionToDisplay);
+    getProducts($('a.products-actual-count').first().text()); // after setting displayed and passing value
+    // getProducts function is called
+  });
   $('a#filter-button').click(function (event) {
     event.preventDefault();
     getProducts($('a.products-actual-count').first().text());
@@ -106,12 +117,16 @@ $(function () {
 
   function getProducts(paginate) {
     var form = $('form.sidebar-filter').serialize();
+    var orderBy = $('a#sorting-option-display').attr("data-sorting-option"); // reading sorting option value
+
     $.ajax({
       method: "GET",
       url: "/",
       data: form + "&" + $.param({
-        paginate: paginate
-      })
+        paginate: paginate,
+        orderBy: orderBy
+      }) // added additional parameter in param()
+
     }).done(function (response) {
       $('div#products-wrapper').empty();
       $.each(response.data, function (index, product) {
@@ -139,7 +154,7 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Projekty\shop-yt\resources\js\welcome.js */"./resources/js/welcome.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\shopYT\shop-yt\resources\js\welcome.js */"./resources/js/welcome.js");
 
 
 /***/ })

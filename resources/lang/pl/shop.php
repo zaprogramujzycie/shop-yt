@@ -5,7 +5,8 @@ return [
         'products' => 'Produkty',
         'categories' => 'Kategorie',
         'price' => 'Cena',
-        'filter' => 'Filtruj'
+        'filter' => 'Filtruj',
+        'sort' => 'Sortuj według:',
     ],
     'columns' => [
         'actions' => 'Akcje'
@@ -48,6 +49,7 @@ return [
             'price' => 'Cena',
             'image' => 'Grafika',
             'category' => 'Kategoria',
+            'category_id' => 'Kategoria', // additional entry to correctly read category name while using column name
         ]
     ]
 ];
