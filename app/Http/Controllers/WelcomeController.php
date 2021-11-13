@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class WelcomeController extends Controller
@@ -41,7 +42,8 @@ class WelcomeController extends Controller
         return view("welcome", [
             'products' => $query->paginate($paginate),
             'categories' => ProductCategory::orderBy('name', 'ASC')->get(),
-            'defaultImage' => config('shop.defaultImage')
+            'defaultImage' => config('shop.defaultImage'),
+            'isGuest' => Auth::guest()
         ]);
     }
 }

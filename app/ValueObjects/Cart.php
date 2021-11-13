@@ -26,18 +26,36 @@ class Cart
         return $this->items;
     }
 
+    public function getSum(): float
+    {
+        return $this->items->sum(function ($item) {
+           return $item->getSum();
+        });
+    }
+
     public function addItem(Product $product): Cart
     {
         $items = $this->items;
         $item = $items->first($this->isProductIdSameAsItemProduct($product));
         if (!is_null($item)) {
-            $items = $items->reject($this->isProductIdSameAsItemProduct($product));
+            $items = $this->removeItemFromCollection($items, $product);
             $newItem = $item->addQuantity($product);
         } else {
             $newItem = new CartItem($product);
         }
         $items->add($newItem);
         return new Cart($items);
+    }
+
+    public function removeItem(Product $product): Cart
+    {
+        $items = $this->removeItemFromCollection($this->items, $product);
+        return new Cart($items);
+    }
+
+    private function removeItemFromCollection(Collection $items, Product $product): Collection
+    {
+        return $items->reject($this->isProductIdSameAsItemProduct($product));
     }
 
     private function isProductIdSameAsItemProduct(Product $product): Closure

@@ -15,6 +15,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('css-files')
 </head>
 <body>
     <div id="app">
@@ -56,6 +57,7 @@
                                         <a class="dropdown-item" href="/users/list">Użytkownicy</a>
                                         <a class="dropdown-item" href="{{ route('products.index') }}">Produkty</a>
                                     @endcan
+                                    <a class="dropdown-item" href="{{ route('cart.index') }}">Koszyk</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
