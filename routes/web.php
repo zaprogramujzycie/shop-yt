@@ -25,8 +25,9 @@ Route::middleware(['auth', 'verified'])->group(function() {
         Route::get('/products/{product}/download', [ProductController::class, 'downloadImage'])->name('products.downloadImage');
         Route::resource('products', ProductController::class);
 
-        Route::get('/users/list', [UserController::class, 'index']);
-        Route::delete('/users/{user}', [UserController::class, 'destroy']);
+        Route::resource('users', UserController::class)->only([
+            'index', 'edit', 'update', 'destroy'
+        ]);
     });
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::post('/cart/{product}', [CartController::class, 'store'])->name('cart.store');
