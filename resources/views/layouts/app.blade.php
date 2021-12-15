@@ -15,6 +15,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('css-files')
 </head>
 <body>
     <div id="app">
@@ -55,14 +56,18 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     {{-- {{isAdmin}} --}}
                                     @can('isAdmin')
-                                        <a class="dropdown-item" href="/users/list">Użytkownicy</a>
+                                        <a class="dropdown-item" href="{{ route('users.index') }}">Użytkownicy</a>
                                         <a class="dropdown-item" href="{{ route('products.index') }}">Produkty</a>
                                     @endcan
+<<<<<<< HEAD
                                     {{-- {{isGrupa1}} --}}
                                     @can('isGrupa1')
                                     <a class="dropdown-item" href="/grupy">Grupy 1</a>
                                      @endcan
 
+=======
+                                    <a class="dropdown-item" href="{{ route('cart.index') }}">Koszyk</a>
+>>>>>>> 97ffa71c722fdbef065bddb9fc71dc28347507a0
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

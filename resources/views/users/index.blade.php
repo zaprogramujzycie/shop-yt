@@ -1047,6 +1047,41 @@ Booster - Data Table
             </div>
         </div>
     </div>
+<<<<<<< HEAD
+=======
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Email</th>
+            <th scope="col">Imię</th>
+            <th scope="col">Nazwisko</th>
+            <th scope="col">Numer telefonu</th>
+            <th scope="col">Akcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($users as $user)
+            <tr>
+                <th scope="row">{{ $user->id }}</th>
+                <td>{{ $user->email }}</td>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->surname }}</td>
+                <td>{{ $user->phone_number }}</td>
+                <td>
+                    <a href="{{ route('users.edit', $user->id) }}">
+                        <button class="btn btn-success btn-sm"><i class="far fa-edit"></i></button>
+                    </a>
+                    <button class="btn btn-danger btn-sm delete" data-id="{{ $user->id }}">
+                        <i class="far fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
+    {{ $users->links() }}
+>>>>>>> 97ffa71c722fdbef065bddb9fc71dc28347507a0
 </div>
 <!-- End XP Col -->
 

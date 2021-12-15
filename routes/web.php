@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 use App\Http\Controllers\GrupyController;
+=======
+use App\Http\Controllers\CartController;
+>>>>>>> 97ffa71c722fdbef065bddb9fc71dc28347507a0
 use App\Http\Controllers\HelloWorldController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -26,9 +30,11 @@ Route::middleware(['auth', 'verified'])->group(function() {
         Route::get('/products/{product}/download', [ProductController::class, 'downloadImage'])->name('products.downloadImage');
         Route::resource('products', ProductController::class);
 
-        Route::get('/users/list', [UserController::class, 'index']);
-        Route::delete('/users/{user}', [UserController::class, 'destroy']);
+        Route::resource('users', UserController::class)->only([
+            'index', 'edit', 'update', 'destroy'
+        ]);
     });
+<<<<<<< HEAD
 
     Route::middleware(['can:isGrupa1'])->group(function() {
         Route::get('/grupy', [GrupyController::class, 'index']);
@@ -42,6 +48,12 @@ Route::middleware(['auth', 'verified'])->group(function() {
         Route::post('/cart/{product}', [App\Http\Controllers\CartController::class, 'store'])->name('cart.store');
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+=======
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/{product}', [CartController::class, 'store'])->name('cart.store');
+    Route::delete('/cart/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+>>>>>>> 97ffa71c722fdbef065bddb9fc71dc28347507a0
 });
 
 Route::get('/hello', [HelloWorldController::class, 'show']);
