@@ -1,0 +1,118 @@
+/* 
+===============
+    General
+===============
+*/
+
+html {
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100%;
+  background: $bg-body;
+}
+body {
+  background: $bg-body;
+  font-family: $font-primary;
+  margin: 0;
+  font-size: $base-font;
+  color: $muted;
+}
+b {
+  font-weight: 600;
+}
+strong {
+  font-weight: 600;
+}
+p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+label {
+    vertical-align: middle;
+}
+* {
+  outline: none !important;
+}
+a {
+  color: $primary;
+  &:hover {
+    color: darken($primary, 5%);
+    outline: 0;
+    text-decoration: none;
+  }
+  &:active {
+    color: darken($primary, 5%);
+    outline: 0;
+    text-decoration: none;
+  }
+  &:focus {
+    color: darken($primary, 5%);
+    outline: 0;
+    text-decoration: none;
+  }
+}
+code {
+  color: $primary;
+}
+
+.xp-leftbar {
+  width: 250px;
+  height: $height;
+  position: fixed;
+  background-color: #fff;
+  box-shadow: 0 0 30px 0 rgba(200, 200, 200, 0.2);
+  z-index: 9;
+  transition: all 0.3s ease;
+}
+.xp-logobar {
+    padding: 16px 0;
+    margin-bottom: 15px;
+}
+.xp-logo {
+  color: $dark !important;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.xp-navigationbar {
+    height: calc(100vh - 100px);
+    overflow: auto;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+.xp-rightbar {
+  margin-left: 250px;
+  overflow: hidden;
+  min-height: 500px;
+  transition: all 0.3s ease;
+}
+.xp-contentbar {
+    padding: 30px;
+    margin-bottom: 30px;
+}
+.xp-footerbar {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 250px;
+  background-color: #353b48;
+  color: #ffffff;
+  text-align: center;
+  padding: 20px 30px;
+}
+.xp-toggle-menu .xp-footerbar {
+    left: 0;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.3); 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.3); 
+}

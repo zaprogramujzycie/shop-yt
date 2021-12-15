@@ -1,0 +1,208 @@
+/* 
+==================
+    Topbar
+==================
+*/
+
+.xp-toggle-menu {
+  .xp-leftbar {
+    position: fixed;
+    left: -250px;
+    transition: all 0.3s ease;
+  }
+  .xp-rightbar {
+    margin-left: 0px;
+  }
+}
+.xp-topbar {
+    background-color: $topbar-bg-color;
+    padding: 15px 30px;
+    .dropdown-toggle {
+      &::after {
+        display: none;
+      }
+    }
+    .xp-badge-up {
+        position: relative;
+        top: -15px;
+        margin: 0 -10px;
+    }
+    .xp-searchbar {
+      input[type="search"] {
+        background-color: $search-bg-color;
+        color: $white;
+        padding-left: 20px;
+        border: none;
+        border-radius: 50px 0 0 50px;
+      }
+      .btn {
+        background-color: $search-bg-color;
+        color: $white;
+        font-weight: 600;
+        font-size: 16px;
+        border-radius: 0 50px 50px 0;
+        padding: 4px 15px;
+      }
+    }
+    .xp-userprofile {    
+        a {
+          img {
+            width: 40px;        
+          }
+          .xp-user-live {
+              position: absolute;
+              bottom: -2px;
+              right: -2px;
+              width: 12px;
+              height: 12px;
+              border-radius: 50%;
+              border: 2px solid #353b48;
+              background-color: $primary;
+          }
+        }
+        .dropdown-menu {
+            top: 15px !important;
+            padding: 10px;
+            background-color: $bg-body;
+            border: 1px solid darken($bg-body, 5%);
+
+            a:hover {
+                color: $primary;
+                background-color: lighten($primary, 30%);
+                border-radius: 3px;
+            }
+        }     
+    }
+    .xp-notification {
+        .dropdown-menu {
+          width:310px;
+          padding: 10px;
+          top: 15px !important;
+          background-color: $bg-body;
+          border: 1px solid darken($bg-body, 5%);
+        }
+        li.media.xp-noti {
+          padding: 10px;
+          background-color: $white;
+          border-radius: 3px;
+          margin-top: 7px;
+          margin-bottom: 7px;
+          border: none;
+          box-shadow: 0 0 30px 0 rgba(200, 200, 200, 0.2);
+          a {
+            h5 {
+              color: $black;
+              span {
+                color: $muted;
+              }
+            }
+            p {
+              color: $muted;
+            }
+          }    
+          .xp-noti-icon {    
+              width: 40px;
+              height: 40px;
+              line-height: 40px;
+              background: lighten($primary, 30%);
+              color: $primary;
+              font-size: 20px;
+              border-radius: 50%;
+              text-align: center;
+              vertical-align: middle;
+          }
+          &:hover {
+            background-color: lighten($primary, 30%);
+            a {
+              h5 {
+                color: $primary;
+                span {
+                  color: $primary;
+                }
+              }
+              p {
+                color: $primary;
+              }
+            }
+            .xp-noti-icon {    
+              background: $white;
+            }
+          }
+        }
+    }
+    .xp-message {
+        .dropdown-menu {
+          width:310px;
+          padding: 10px;
+          top: 15px !important;
+          background-color: $bg-body;
+          border: 1px solid darken($bg-body, 5%);
+        }
+        li.media.xp-msg {
+          padding: 10px;
+          background-color: $white;
+          border-radius: 3px;
+          margin-top: 7px;
+          margin-bottom: 7px;
+          border: none;
+          box-shadow: 0 0 30px 0 rgba(200, 200, 200, 0.2);
+          a {
+            h5 {
+              color: $black;
+              span {
+                color: $muted;
+              }
+            }
+            p {
+              color: $muted;
+            }
+          }    
+          .xp-noti-icon {    
+              width: 40px;
+              height: 40px;
+              line-height: 40px;
+              background: lighten($primary, 30%);
+              color: $primary;
+              font-size: 20px;
+              border-radius: 50%;
+              text-align: center;
+              vertical-align: middle;
+          }
+          &:hover {
+            background-color: lighten($primary, 30%);
+            a {
+              h5 {
+                color: $primary;
+                span {
+                  color: $primary;
+                }
+              }
+              p {
+                color: $primary;
+              }
+            }
+            .xp-noti-icon {    
+              background: $white;
+            }
+          }
+        }
+    }
+}
+.xp-breadcrumbbar {
+    background-color: $topbar-bg-color;
+    padding: 15px 30px;
+    .page-title {
+      font-size: 20px;
+      color: $white;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+
+    .breadcrumb {
+      .breadcrumb-item {
+        a {
+          color: $muted;
+        }
+      }
+    }
+}
