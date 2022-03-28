@@ -4,6 +4,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\HelloWorldController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
@@ -41,6 +42,7 @@ Route::middleware(['auth', 'verified'])->group(function() {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 });
 
+Route::post('/payment/status', [PaymentController::class, 'status']);
 Route::get('/hello', [HelloWorldController::class, 'show']);
 
 Auth::routes(['verify' => true]);
