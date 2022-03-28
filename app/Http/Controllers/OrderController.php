@@ -9,8 +9,10 @@ use App\ValueObjects\Cart;
 use Devpark\Transfers24\Exceptions\RequestException;
 use Devpark\Transfers24\Exceptions\RequestExecutionException;
 use Devpark\Transfers24\Requests\Transfers24;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
@@ -59,7 +61,7 @@ class OrderController extends Controller
         return back();
     }
 
-    private function paymentTransaction(Order $order)
+    private function paymentTransaction(Order $order): Redirector|Application|RedirectResponse
     {
         $payment = new Payment();
         $payment->order_id = $order->id;
@@ -77,11 +79,11 @@ class OrderController extends Controller
                 $payment->error_code = $response->getErrorCode();
                 $payment->error_description = json_encode($response->getErrorDescription());
                 $payment->save();
-                return back()->with('warning', 'Ups... Coś poszło nie tak!');
+                return back()->with('error', 'Ups... Coś poszło nie tak!');
             }
         } catch (RequestException|RequestExecutionException $error) {
             Log::error("Błąd transakcji", ['error' => $error]);
-            return back()->with('warning', 'Ups... Coś poszło nie tak!');
+            return back()->with('error', 'Ups... Coś poszło nie tak!');
         }
     }
 }
