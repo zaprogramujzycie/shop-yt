@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  laravel:
+    container_name: shop-yt
+    build:
+      context: .
+    ports:
+      - 80:80
+    volumes:
+      - shop-yt-volume:/var/www/html/storage
+    networks:
+      - shop-yt-network
+
+  database:
+    container_name: shop-yt-db
+    image: mariadb:latest
+    ports:
+      - ${DB_PORT}:3306
+    environment:
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - shop-yt-db-volume:/var/lib/mysql
+    networks:
+      - shop-yt-network
+
+volumes:
+  shop-yt-volume:
+    driver: local
+  shop-yt-db-volume:
+    driver: local
+
+networks:
+  shop-yt-network:
+    driver: bridge
