@@ -50,12 +50,11 @@ class Cart
         $items = $this->items;
         $item = $items->first($this->isProductIdSameAsItemProduct($product));
         if (!is_null($item)) {
-            $items = $this->removeItemFromCollection($items, $product);
-            $newItem = $item->addQuantity($product);
+            $item->addQuantity($product);
         } else {
             $newItem = new CartItem($product);
+            $items->add($newItem);
         }
-        $items->add($newItem);
         return new Cart($items);
     }
 
@@ -63,11 +62,6 @@ class Cart
     {
         $items = $this->removeItemFromCollection($this->items, $product);
         return new Cart($items);
-    }
-
-    private function removeItemFromCollection(Collection $items, Product $product): Collection
-    {
-        return $items->reject($this->isProductIdSameAsItemProduct($product));
     }
 
     private function isProductIdSameAsItemProduct(Product $product): Closure
